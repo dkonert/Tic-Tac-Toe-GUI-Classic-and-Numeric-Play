@@ -2,6 +2,10 @@ package boardgame;
 
 import java.util.Scanner;
 
+/**
+ * Main class for interacting with user for Tic Tac Toe
+ * @author daniellakonert
+ */
 public class TextUI {
 
     private static final Scanner IO = new Scanner(System.in);

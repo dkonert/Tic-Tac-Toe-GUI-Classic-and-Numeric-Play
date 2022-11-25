@@ -1,7 +1,8 @@
 package boardgame;
 
 /**
- * Class for running and storing a game of Tic Tac Toe
+ * Main class for running and storing a game of Tic Tac Toe
+ * @author daniellakonert
  */
 public class Runner extends BoardGame implements Saveable {
     //init variables
@@ -46,6 +47,10 @@ public class Runner extends BoardGame implements Saveable {
         return -1;
     }
 
+    /**
+     * Calculates if someone won the game
+     * @return winner
+     */
     public char calcWinner() {
         char winner = '?'; //init question mark character to winner variable
         for (int i = 0; i < 3; i++) { //checks to see if player made a line
@@ -77,6 +82,11 @@ public class Runner extends BoardGame implements Saveable {
         return winner;
     }
 
+    /**
+     * Checks if the position the user picked was taken
+     * @param position
+     * @return true if they did false otherwise
+     */
     private boolean checkBoard(int position) { //function that checks if position has been taken
         if (board[posToIndex[position]] == 'X' || board[posToIndex[position]] == 'O') {
             return true;
@@ -84,6 +94,15 @@ public class Runner extends BoardGame implements Saveable {
         return false;
     }
 
+    /**
+     * Tracks user move sees
+     * Position on board
+     *  @param across across index, 1 based
+     *  @param over  down index, 1 based
+     * Player
+     *  @param input  String input from game
+     * @return false if position is out of bounds or taken true if it has been placed
+     */
     @Override
     public boolean takeTurn(int across, int over, String input) {  //init function to track move
         int position = (3 * over) + across;
@@ -115,6 +134,15 @@ public class Runner extends BoardGame implements Saveable {
         return true;
     }
 
+    /**
+     * Inputs player
+     * Position on board
+     *  @param across across index, zero based
+     *  @param down  down index, zero based
+     * Number refering to player
+     *  @param input  int input from game
+     * @return player false otherwise
+     */
     @Override
     public boolean takeTurn(int across, int down, int input){
         if (input == 1){
@@ -125,6 +153,10 @@ public class Runner extends BoardGame implements Saveable {
         return false;
     }
 
+    /**
+     * Is game done
+     * @return true if game is done false otherwise
+     */
     @Override
     public boolean isDone(){
         int done = getWinner();
@@ -134,11 +166,19 @@ public class Runner extends BoardGame implements Saveable {
         return true;
     }
 
+    /**
+     * Board
+     * @return board
+     */
     @Override
     public String getGameStateMessage(){
         return String.valueOf(board);
     }
 
+    /**
+     * Saves board
+     * @return data of board
+     */
     @Override
     public String getStringToSave() {
         String data = "";
@@ -150,6 +190,10 @@ public class Runner extends BoardGame implements Saveable {
         return data;
     }
 
+    /**
+     * loads file and outputs board
+     * @param toLoad loading data from board
+     */
     @Override
     public void loadSavedString(String toLoad) {
         int xCount = 0;
@@ -177,6 +221,9 @@ public class Runner extends BoardGame implements Saveable {
         depth = xCount + oCount;
     }
 
+    /**
+     * Reset Game
+     */
     @Override
     public void newGame(){
         super.newGame();
@@ -189,6 +236,10 @@ public class Runner extends BoardGame implements Saveable {
         depth = 0;
     }
 
+    /**
+     * Returns which players turn it is
+     * @return which player's turn
+     */
     int getTurn(){
         return turn;
     }

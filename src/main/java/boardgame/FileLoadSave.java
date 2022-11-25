@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Main class for managing loading and saving files
+ * @author daniellakonert
+ */
 public class FileLoadSave {
 
     /**

@@ -1,9 +1,5 @@
 
 package boardgame;
-/**
- *
- */
-
         import javax.swing.JFrame;
         import javax.swing.JButton;
         import javax.swing.JPanel;
@@ -17,7 +13,8 @@ package boardgame;
 
 
 /**
- *
+ * Main class for managing the state of the GUI
+ * @author daniellakonert
  */
 public class GUI extends JFrame {
     private JPanel gameContainer;
@@ -26,6 +23,10 @@ public class GUI extends JFrame {
     //private Player player2;
 
 
+    /**
+     * GUI game
+     * @param title
+     */
     public GUI(String title){
         // call the superclass constructor
         super();
@@ -44,6 +45,11 @@ public class GUI extends JFrame {
         start();
 
     }
+
+    /**
+     * All the Buttons for the game
+     * @return button panel
+     */
     private JPanel makeButtonPanel(){
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -52,6 +58,10 @@ public class GUI extends JFrame {
         return buttonPanel;
     }
 
+    /**
+     * Start message
+     * @return message
+     */
     private JPanel startupMessage(){
         JPanel temp = new JPanel();
         temp.add(new JLabel("time to play some board games!"));
@@ -59,12 +69,20 @@ public class GUI extends JFrame {
 
     }
 
+    /**
+     * Tic Tac Toe Button
+     * @return button
+     */
     private JButton makeTicTacToeButton(){
         JButton button = new JButton("Play TicTacToe");
         button.addActionListener(e-> ticTacToe());
         return button;
     }
 
+    /**
+     * Numerical Tic Tac Toe Button
+     * @return button
+     */
     private JButton makeNumericalTTTButton(){
         JButton button = new JButton("Play Numerical TicTacToe");
         button.addActionListener(e-> numericalTTT());
@@ -72,8 +90,9 @@ public class GUI extends JFrame {
     }
 
 
-
-
+    /**
+     * starts
+     */
     public void start(){
         gameContainer.removeAll();
         gameContainer.add(startupMessage());
@@ -83,6 +102,9 @@ public class GUI extends JFrame {
     }
 
 
+    /**
+     * Tic Tac Toe section of the game
+     */
     protected void ticTacToe(){
         gameContainer.removeAll();
         gameContainer.add(new TTTUI(this));
@@ -91,6 +113,9 @@ public class GUI extends JFrame {
         pack();
     }
 
+    /**
+     * Numerical TTT section of the game
+     */
     protected void numericalTTT(){
         gameContainer.removeAll();
         gameContainer.add(new NumericalGUI(this));
@@ -101,11 +126,13 @@ public class GUI extends JFrame {
     }
 
 
-
+    /**
+     * GUI main
+     * @param args
+     */
     public static void main(String[] args){
-        GUI example = new GUI("NxM Games");
+        GUI example = new GUI("Daniella Games");
         example.setVisible(true);
-
 
     }
 

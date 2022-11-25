@@ -1,7 +1,4 @@
 package boardgame;
-/**
- *  an example GUI view for an NxM game
- */
 
 
         import javax.swing.JPanel;
@@ -17,7 +14,8 @@ package boardgame;
         import boardgame.ui.PositionAwareButton;
 
 /**
- *
+ * Main class for interacting with user for GUI
+ * @author daniellakonert
  */
 public class TTTUI extends JPanel {
 

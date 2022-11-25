@@ -3,7 +3,8 @@ package boardgame;
 import java.util.Objects;
 
 /**
- * Class for running and storing a game of Tic Tac Toe
+ * Main class for running and storing a game of Numerical Tic Tac Toe
+ * @author daniellakonert
  */
 public class NumericalTicTacToe extends BoardGame implements Saveable {
     //init variables
@@ -22,7 +23,7 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
     private String[] playerTwoMoves = {"2","4","6","8"};
 
     /**
-     * Main class for running Tic Tac Toe Game
+     * Main class for running Numerical Tic Tac Toe Game
      */
     NumericalTicTacToe() {
         super(3,3);
@@ -52,6 +53,10 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         return -1;
     }
 
+    /**
+     * Calculates if someone won the game
+     * @return winner
+     */
     public int calcWinner(int[] numbers){
         int winner = -1; //init question mark character to winner variable
         for (int i = 0; i < 3; i++) { //checks to see if player made a line
@@ -78,6 +83,11 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         }
         return winner;
     }
+    /**
+     * Checks if the position the user picked was taken
+     * @param position
+     * @return true if they did false otherwise
+     */
     private boolean checkBoard(int position) { //function that checks if position has been taken
         if (board[posToIndex[position]] != 'X') {
             return true;
@@ -103,6 +113,15 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         }
         return false;
     }
+    /**
+     * Tracks user move sees
+     * Position on board
+     *  @param across across index, 1 based
+     *  @param over  down index, 1 based
+     * Player
+     *  @param input  String input from game
+     * @return false if position is out of bounds or taken true if it has been placed
+     */
     @Override
     public boolean takeTurn(int across, int over, String input) {  //init function to track move
         int position = (3 * over) + across;
@@ -129,6 +148,15 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         return true;
     }
 
+    /**
+     * Inputs player
+     * Position on board
+     *  @param across across index, zero based
+     *  @param down  down index, zero based
+     * Number refering to player
+     *  @param input  int input from game
+     * @return player false otherwise
+     */
     @Override
     public boolean takeTurn(int across, int down, int input){
         if (input >= 1 && input <= 9){
@@ -137,6 +165,10 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         return false;
     }
 
+    /**
+     * Is game done
+     * @return true if game is done false otherwise
+     */
     @Override
     public boolean isDone(){
         int done = getWinner();
@@ -146,11 +178,19 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         return true;
     }
 
+    /**
+     * Board
+     * @return board
+     */
     @Override
     public String getGameStateMessage(){
         return String.valueOf(board);
     }
 
+    /**
+     * Saves board
+     * @return data of board
+     */
     @Override
     public String getStringToSave() {
         String data = "";
@@ -162,6 +202,10 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         return data;
     }
 
+    /**
+     * loads file and outputs board
+     * @param toLoad loading data from board
+     */
     @Override
     public void loadSavedString(String toLoad) {
         int evenCount = 0;
@@ -190,7 +234,9 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         }
         depth = oddCount + evenCount;
     }
-
+    /**
+     * Reset Game
+     */
     @Override
     public void newGame(){
         super.newGame();
@@ -205,7 +251,10 @@ public class NumericalTicTacToe extends BoardGame implements Saveable {
         playerTwoMoves = new String[]{"2", "4", "6", "8"};
     }
 
-
+    /**
+     * Returns which players turn it is
+     * @return which player's turn
+     */
     public int getTurn(){
         return turn;
     }

@@ -1,7 +1,5 @@
 package boardgame;
-/**
- *  an example GUI view for an NxM game
- */
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
@@ -15,7 +13,8 @@ import java.awt.event.ActionEvent;
 import boardgame.ui.PositionAwareButton;
 
 /**
- *
+ * Main class for managing the state of the Numerical GUI
+ * @author daniellakonert
  */
 public class NumericalGUI extends JPanel {
 
@@ -27,6 +26,10 @@ public class NumericalGUI extends JPanel {
     private JMenuBar menuBar;
 
 
+    /**
+     * Numerical GUI game frame
+     * @param gameFrame
+     */
     public NumericalGUI(GUI gameFrame){
         // call the superclass constructor
         super();
@@ -47,14 +50,30 @@ public class NumericalGUI extends JPanel {
         add(makeButtonGrid(3,3), BorderLayout.CENTER);
     }
 
+    /**
+     * Sets controller
+     * @param controller
+     */
     public void setGameController(NumericalTicTacToe controller){
         this.game = controller;
     }
+
+    /**
+     * New game Button
+     * @return
+     */
     private JButton makeNewGameButton(){
         JButton button = new JButton("New Game");
         button.addActionListener(e->newGame());
         return button;
     }
+
+    /**
+     * Buttons for game
+     * @param tall
+     * @param wide
+     * @return panel of buttons
+     */
 
     private JPanel makeButtonGrid(int tall, int wide){
         JPanel panel = new JPanel();
@@ -78,6 +97,9 @@ public class NumericalGUI extends JPanel {
 
     /* controller methods start here */
 
+    /**
+     * Checks state of game is there a winner/tie
+     */
     private void checkGameState(){
         int selection= 0;
         JOptionPane gameOver = new JOptionPane();
@@ -109,6 +131,9 @@ public class NumericalGUI extends JPanel {
 
     }
 
+    /**
+     * Updates buttons
+     */
     protected void updateView(){
         //update the labels on the buttons according to the model
         for (int y=0; y<game.getHeight(); y++){
@@ -119,13 +144,19 @@ public class NumericalGUI extends JPanel {
 
     }
 
+    /**
+     * New game
+     */
     protected void newGame(){
         game.newGame();
         updateView();
     }
 
 
-
+    /**
+     * number user enters for game
+     * @param e
+     */
     private void enterNumber(ActionEvent e){
         //send input to game and update view
         String input;
@@ -140,6 +171,9 @@ public class NumericalGUI extends JPanel {
         }
     }
 
+    /**
+     * menu with load and save
+     */
     public void makeMenu(){
         menuBar = new JMenuBar();
         JMenu menu = new JMenu("A submenu");
@@ -152,6 +186,10 @@ public class NumericalGUI extends JPanel {
         loadItem.addActionListener(e->loadSomething());
         saveItem.addActionListener(e->saveSomething());
     }
+
+    /**
+     * Saves game
+     */
     protected void saveSomething(){
 
         String input = JOptionPane.showInputDialog(null,"Enter filename to be saved ");
@@ -159,6 +197,10 @@ public class NumericalGUI extends JPanel {
             FileLoadSave.save(input, game.getStringToSave());
         }
     }
+
+    /**
+     * Loads game
+     */
     protected void loadSomething(){
 
         String input = JOptionPane.showInputDialog(null,"Enter filename to be loaded");

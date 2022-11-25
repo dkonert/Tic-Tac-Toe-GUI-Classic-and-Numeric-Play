@@ -1,5 +1,9 @@
 package boardgame;
 
+/**
+ * Main class for running program
+ * @author daniellakonert
+ */
 public class Main {
     private static Runner ticTacToe = new Runner();
     private static TextUI ui = new TextUI();
