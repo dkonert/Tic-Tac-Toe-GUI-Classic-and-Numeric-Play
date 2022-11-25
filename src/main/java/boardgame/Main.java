@@ -8,6 +8,10 @@ public class Main {
     private static Runner ticTacToe = new Runner();
     private static TextUI ui = new TextUI();
 
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args) {
         ui.printBoard(ticTacToe.getGameStateMessage()); //prints board in the beginning
         while (!(ticTacToe.isDone())){

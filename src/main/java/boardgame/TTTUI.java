@@ -27,6 +27,10 @@ public class TTTUI extends JPanel {
     private JMenuBar menuBar;
 
 
+    /**
+     * TTT GUI game frame
+     * @param gameFrame
+     */
     public TTTUI(GUI gameFrame){
         // call the superclass constructor
         super();
@@ -47,15 +51,28 @@ public class TTTUI extends JPanel {
         add(makeButtonGrid(3,3), BorderLayout.CENTER);
     }
 
+    /**
+     * Sets controller
+     * @param controller
+     */
     public void setGameController(Runner controller){
         this.game = controller;
     }
+    /**
+     * New game Button
+     * @return
+     */
     private JButton makeNewGameButton(){
         JButton button = new JButton("New Game");
         button.addActionListener(e->newGame());
         return button;
     }
-
+    /**
+     * Buttons for game
+     * @param tall
+     * @param wide
+     * @return panel of buttons
+     */
     private JPanel makeButtonGrid(int tall, int wide){
         JPanel panel = new JPanel();
         buttons = new PositionAwareButton[tall][wide];
@@ -77,7 +94,9 @@ public class TTTUI extends JPanel {
     }
 
     /* controller methods start here */
-
+    /**
+     * Checks state of game is there a winner/tie
+     */
     private void checkGameState(){
         int selection= 0;
         JOptionPane gameOver = new JOptionPane();
@@ -108,7 +127,9 @@ public class TTTUI extends JPanel {
         }
 
     }
-
+    /**
+     * Updates buttons
+     */
     protected void updateView(){
         //update the labels on the buttons according to the model
         for (int y=0; y<game.getHeight(); y++){
@@ -118,14 +139,19 @@ public class TTTUI extends JPanel {
         }
 
     }
-
+    /**
+     * New game
+     */
     protected void newGame(){
         game.newGame();
         updateView();
     }
 
 
-
+    /**
+     * where players place their piece
+     * @param e
+     */
     private void enterNumber(ActionEvent e){
         //send input to game and update view
         PositionAwareButton clicked = ((PositionAwareButton)(e.getSource()));
@@ -134,6 +160,9 @@ public class TTTUI extends JPanel {
         }
     }
 
+    /**
+     * menu with load and save
+     */
     public void makeMenu(){
         menuBar = new JMenuBar();
         JMenu menu = new JMenu("A submenu");
@@ -146,6 +175,9 @@ public class TTTUI extends JPanel {
         loadItem.addActionListener(e->loadSomething());
         saveItem.addActionListener(e->saveSomething());
     }
+    /**
+     * Saves game
+     */
     protected void saveSomething(){
 
         String input = JOptionPane.showInputDialog(null,"Enter filename to be saved ");
@@ -153,6 +185,9 @@ public class TTTUI extends JPanel {
             FileLoadSave.save(input, game.getStringToSave());
         }
     }
+    /**
+     * Loads game
+     */
     protected void loadSomething(){
 
         String input = JOptionPane.showInputDialog(null,"Enter filename to be loaded");

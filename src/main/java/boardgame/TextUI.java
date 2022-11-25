@@ -18,6 +18,10 @@ public class TextUI {
         System.out.println(board);
     }
 
+    /**
+     * Tells user game ends with whatever winner or tie
+     * @param code
+     */
     public void gameEnd(int code){
         if (code == 0) {
             System.out.println("The Game was a Tie!");
@@ -29,14 +33,24 @@ public class TextUI {
 
     }
 
+    /**
+     * Error - out of bounds
+     */
     public void errorBounds(){
         System.out.println("Error - Out of Bounds");
     }
 
+    /**
+     * error - illegal move
+     */
     public void errorMove(){
         System.out.println("Illegal Move! Try Again");
     }
 
+    /**
+     * which players turn it is
+     * @param turn
+     */
     public void playerTurn(int turn){
         if (turn == 1){
             System.out.println("Turn = X");
@@ -46,6 +60,11 @@ public class TextUI {
 
     }
 
+    /**
+     * Asks user to enter piece to place
+     * @param player
+     * @return piece
+     */
     public int getPlayerInput(int player){
         int input;
 
@@ -60,6 +79,10 @@ public class TextUI {
         return input;
     }
 
+    /**
+     * Asks user for a file name
+     * @return filename
+     */
     public String fileName() {
         System.out.println("Enter your saved filename: ");
         String input = IO.nextLine();
