@@ -106,7 +106,7 @@ public abstract class BoardGame{
     /** 
      * Must be overridden if used.  Returns a message that can be output to use that provides
      * information about the game state.    
-     * @return String mesage to user
+     * @return String message to user
      */
     public abstract String getGameStateMessage();
 
