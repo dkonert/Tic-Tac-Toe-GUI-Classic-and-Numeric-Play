@@ -1,6 +1,4 @@
-There are 3 classes to develop this text-based game. A Board class that is responsible for managing the board. TextUI class that is responsible for interacting with the user. Finally, a ConnectFour class which acts as the main, calling both Board and TextUI methods.
-
-## Getting Started
+## Tic Tac Toe GUI Classic and Numeric Play
 
 ### Dependencies
 * package boardgame
