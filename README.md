@@ -53,9 +53,7 @@ GUI GAME FRAME
 
 NAME: Daniella Konert
 
-STUDENT ID: 1185607
-
-EMAIL: dkonert@uoguelph.ca
+EMAIL: daniella.konert@gmail.com
 
 PHONE: (647) 967-9915
 
